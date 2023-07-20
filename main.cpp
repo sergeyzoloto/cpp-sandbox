@@ -14,5 +14,11 @@ int main()
 {
   std::cout << "Hello World!" << std::endl;
 
+  int first_number{5};
+  int second_number{9};
+
+  int sum = first_number + second_number;
+  std::cout << "sum : " << sum << std::endl;
+
   return 0;
 }
