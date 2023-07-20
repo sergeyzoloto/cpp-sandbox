@@ -10,6 +10,17 @@ int addNumbers(int first_param, int second_param)
   return result;
 }
 
+int getName()
+{
+  std::string full_name;
+
+  std::cout << "Type in your full name : " << std::endl;
+  // That's how we get text data with spaces
+  std::getline(std::cin, full_name);
+
+  std::cout << "Hello " << full_name << "!" << std::endl;
+}
+
 int main()
 {
   std::cout << "Hello World!" << std::endl;
@@ -19,6 +30,7 @@ int main()
 
   int sum = first_number + second_number;
   std::cout << "sum : " << sum << std::endl;
+  getName();
 
   return 0;
 }
