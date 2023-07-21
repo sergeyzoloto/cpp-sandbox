@@ -239,6 +239,32 @@ int nullptrCheck()
   return 0;
 }
 
+// Reassignment of stack address to active pointer
+int memoryLeaks()
+{
+  int *p_number{new int{67}}; // Points to some address
+  // Should delete and reset here
+  int number{55}; // lives at another address
+  p_number = &number;
+  /*
+    Now p_number points to the second address, but our
+    program has lost access to that memory location.
+    We lost the key to that piece of memory thought it's
+    still there.
+    Memory has been leaked.
+  */
+
+  delete p_number;
+  p_number = nullptr;
+
+  /*
+    The same is with pointers in local scopes.
+    They can be accessed and must be released in the same
+    scope.
+  */
+  return 0;
+}
+
 int main()
 {
   // helloWorld();
@@ -247,7 +273,8 @@ int main()
   // pointerToChar();
   // allocateMemory();
   // memoryOverflow();
-  nullptrCheck();
+  // nullptrCheck();
+  memoryLeaks();
 
   return 0;
 }
