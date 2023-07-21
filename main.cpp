@@ -452,6 +452,12 @@ of the same function by taking different parameters. Parameters can
 differ by order, number and types.
 */
 
+// Lambda functions
+/*
+This is a mechanism to set up anonymous function, we can either give them name
+and call them, or we can even get them to do things directly.
+*/
+
 int main()
 {
   // helloWorld();
@@ -471,9 +477,62 @@ int main()
   say_age(&age);                                                                   // Argument
   std::cout << "age (after call) : " << age << " - &age : " << &age << std::endl;  // 24
 
-  std::cout << "age (before call) : " << age << "- &age : " << &age << std::endl; // 23
-  say_age(age);                                                                   // Argument
-  std::cout << "age (after call) : " << age << "- &age : " << &age << std::endl;  // 24
+  std::cout << "age (before call) : " << age << " - &age : " << &age << std::endl; // 23
+  say_age(age);                                                                    // Argument
+  std::cout << "age (after call) : " << age << " - &age : " << &age << std::endl;  // 24
+
+  // Lambda function signature
+  auto func = [/*capture list*/](/*parameters*/) -> /*return type*/ void
+  {
+    /*function body*/
+    std::cout << "Hello World!" << std::endl;
+  };
+  func();
+
+  // Capturing by value
+  auto anotherFunc = [age]()
+  {
+    std::cout << "Age : " << age << std::endl;
+  };
+
+  auto oneMoreFunc = [&age]()
+  {
+    std::cout << "Age : " << age++ << std::endl;
+  };
+
+  oneMoreFunc();
+
+  // Capture everything by value
+  /*
+   int c{42};
+
+   auto func = [=](){
+       std::cout << "Inner value : " << c << std::endl;
+   };
+
+   for(size_t i{} ; i < 5 ;++i){
+       std::cout << "Outer value : " << c << std::endl;
+       func();
+       ++c;
+   }
+   */
+
+  // Capturing all reference
+  int c{42};
+  int d{5};
+
+  auto func = [&]()
+  {
+    std::cout << "Inner value : " << c << std::endl;
+    std::cout << "Inner value(d) : " << d << std::endl;
+  };
+
+  for (size_t i{}; i < 5; ++i)
+  {
+    std::cout << "Outer value : " << c << std::endl;
+    func();
+    ++c;
+  }
 
   return 0;
 }
