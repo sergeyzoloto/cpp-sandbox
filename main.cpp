@@ -163,13 +163,49 @@ int allocateMemory()
   return 0;
 }
 
+// When new Fails
+int memoryOverflow()
+{
+  // TRY CATCH
+
+  try
+  {
+    for (size_t i{0}; i < 1000000; ++i)
+    {
+      int *data = new int[1000000000];
+    }
+  }
+  catch (std::exception &ex)
+  {
+    std::cout << "Something went wrong : " << ex.what() << std::endl;
+  }
+
+  // NOTHROW
+  for (size_t i{0}; i < 100; ++i)
+  {
+    int *data = new (std::nothrow) int[1000000000];
+
+    if (data != nullptr)
+    {
+      std::cout << "Data allocated" << std::endl;
+    }
+    else
+    {
+      std::cout << "Data allocation failed" << std::endl;
+    }
+  }
+
+  return 0;
+}
+
 int main()
 {
   // helloWorld();
   // getName();
   // autoVariables();
   // pointerToChar();
-  allocateMemory();
+  // allocateMemory();
+  memoryOverflow();
 
   return 0;
 }
