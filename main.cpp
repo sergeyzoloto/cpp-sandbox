@@ -445,6 +445,13 @@ void say_age(int &age)
   std::cout << "Hello , you are " << age << " years old! &age : " << &age << std::endl; // 24
 }
 
+// * Function Overloading
+/*
+This is a mechanism that allows us declare multiple copies
+of the same function by taking different parameters. Parameters can
+differ by order, number and types.
+*/
+
 int main()
 {
   // helloWorld();
