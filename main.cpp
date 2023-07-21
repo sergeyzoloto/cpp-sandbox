@@ -3,6 +3,18 @@
 // A statement is a basic unit of computation in a C++ program
 // Every C++ program is a collection of statements organized in a certain way
 
+int helloWorld()
+{
+  std::cout << "Hello World!" << std::endl;
+
+  int first_number{5};
+  int second_number{9};
+
+  int sum = first_number + second_number;
+  std::cout << "sum : " << sum << std::endl;
+  return 0;
+}
+
 // Define function before you can use it
 int addNumbers(int first_param, int second_param)
 {
@@ -61,25 +73,76 @@ int pointerToChar()
   std::cout << "message: " << message << std::endl;
 
   // To allow further modification
+  /*
   char message1[]{"Hello World!"};
   message1[0] = "B";
   std::cout << "message1 : " << message1 << std::endl;
+  */
+  return 0;
+}
+
+// Dynamic Memory Allocation
+
+/*
+  Initialize the pointer with dynamic memory
+  Dynamically allocate memory at run time and make
+  a pointer point to it.
+*/
+
+int allocateMemory()
+{
+  int *p_number{nullptr};
+  /*
+    Dynamically allocate space for a single int on the heap.
+    This memory belongs to our program from now on. The system
+    After this line executes, we will have a valid memory location
+    allocated. The size of the allocated memory will be such that
+    it can store the type pointed to by the pointer;
+  */
+  p_number = new int; // 'new' allocates memory in heap
+
+  // Writing into dynamically allocated memory
+  *p_number = 77;
+  std::cout << "Dynamically allocating memory : " << std::endl
+            << "*p_number : " << *p_number << std::endl;
+
+  // Releasing and resetting
+  delete p_number;
+  p_number = nullptr; // don't forget
+
+  /*
+  It is also possible to initialize the pointer with a valid
+  address up on declaration, not with a nullptr
+  */
+  int *p_number1{new int};     // contains junk value
+  int *p_number2{new int(22)}; // use direct init
+  int *p_number3{new int{23}}; // use uniform
+
+  // Releasing and resetting
+  delete p_number1;
+  delete p_number2;
+  delete p_number3;
+  p_number1 = nullptr;
+  p_number2 = nullptr;
+  p_number3 = nullptr;
+
+  // You can reuse pointers
+  p_number1 = new int(81);
+  // release memory again
+  delete p_number1;
+  p_number1 = nullptr;
+  // BUT Never delete the same pointer twice!
 
   return 0;
 }
 
 int main()
 {
-  std::cout << "Hello World!" << std::endl;
-
-  int first_number{5};
-  int second_number{9};
-
-  int sum = first_number + second_number;
-  std::cout << "sum : " << sum << std::endl;
+  // helloWorld();
   // getName();
   // autoVariables();
-  pointerToChar();
+  // pointerToChar();
+  allocateMemory();
 
   return 0;
 }
