@@ -133,6 +133,33 @@ int allocateMemory()
   p_number1 = nullptr;
   // BUT Never delete the same pointer twice!
 
+  // Let's say we have a couple of pointers pointing to the same place
+  int *p_number4{new int(87)};
+
+  // Check for nullptr before use
+  if (p_number4 != nullptr)
+  {
+    std::cout << "*p_number4 : " << *p_number4 << std::endl;
+  }
+  else
+  {
+    std::cout << "invalid memory access" << std::endl;
+  }
+
+  int *p_number5{p_number4};
+
+  if (!(p_number4 == nullptr))
+  {
+    // Only use slave pointers when master pointer is valid
+    std::cout << "p_number5 : " << p_number5 << " - "
+              << *p_number5 << std::endl;
+  }
+
+  delete p_number4;    // release
+  delete p_number5;    // release
+  p_number4 = nullptr; // reset
+  p_number5 = nullptr; // reset
+
   return 0;
 }
 
