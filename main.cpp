@@ -389,6 +389,35 @@ int references()
   return 0;
 }
 
+// * Functions
+/*
+Function is a reusable piece of code that can take a number of optional
+inputs and produce some desirable output.
+
+Function signature = Function name + Function parameters
+The signature must be unique for the entire C++ program.
+
+Keep in mind: changes to the locally scoped parameters doesn't affect the
+original arguments. Instead, functions create local copies of the arguments
+passed to the function.
+
+Function declaration
+can be separated from
+function definition or implementation.
+The prototype needs to come before the function call.
+
+int max (int a, int b); // Prototype
+...
+c = max(a, b); // call
+...
+int max (int a, int b) {...}; // Definition
+
+Definitions can be placed in any cpp files. A good rule is to put them in
+a file with corresponding name:
+** compare.h
+** compare.cpp
+*/
+
 int main()
 {
   // helloWorld();
