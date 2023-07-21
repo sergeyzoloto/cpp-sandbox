@@ -318,6 +318,64 @@ int dynamicallyAllocatedArrays()
   return 0;
 }
 
+// References
+int references()
+{
+  int int_data{33};
+  double double_data{55};
+
+  // References are just another aliases for variables
+  int &ref_int_data{int_data};
+  double &ref_double_data{double_data};
+
+  // Print
+  std::cout << "int_data : " << int_data << std::endl
+            << "&int_data : " << &int_data << std::endl
+            << "double_data : " << double_data << std::endl
+            << "&double_data : " << &double_data << std::endl;
+
+  std::cout << "=====" << std::endl;
+
+  std::cout << "ref_int_data : " << ref_int_data << std::endl
+            << "&ref_int_data : " << &ref_int_data << std::endl
+            << "ref_double_data : " << ref_double_data << std::endl
+            << "&ref_double_data : " << &ref_double_data << std::endl;
+
+  int_data = 100;
+  double_data = 50.5;
+
+  // Print again
+  std::cout << "int_data : " << int_data << std::endl
+            << "&int_data : " << &int_data << std::endl
+            << "double_data : " << double_data << std::endl
+            << "&double_data : " << &double_data << std::endl;
+
+  std::cout << "=====" << std::endl;
+
+  std::cout << "ref_int_data : " << ref_int_data << std::endl
+            << "&ref_int_data : " << &ref_int_data << std::endl
+            << "ref_double_data : " << ref_double_data << std::endl
+            << "&ref_double_data : " << &ref_double_data << std::endl;
+
+  ref_int_data = 1000;
+  ref_double_data = 1000.5;
+
+  // Print again
+  std::cout << "int_data : " << int_data << std::endl
+            << "&int_data : " << &int_data << std::endl
+            << "double_data : " << double_data << std::endl
+            << "&double_data : " << &double_data << std::endl;
+
+  std::cout << "=====" << std::endl;
+
+  std::cout << "ref_int_data : " << ref_int_data << std::endl
+            << "&ref_int_data : " << &ref_int_data << std::endl
+            << "ref_double_data : " << ref_double_data << std::endl
+            << "&ref_double_data : " << &ref_double_data << std::endl;
+
+  return 0;
+}
+
 int main()
 {
   // helloWorld();
@@ -328,7 +386,8 @@ int main()
   // memoryOverflow();
   // nullptrCheck();
   // memoryLeaks();
-  dynamicallyAllocatedArrays();
+  // dynamicallyAllocatedArrays();
+  references();
 
   return 0;
 }
