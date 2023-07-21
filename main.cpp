@@ -484,6 +484,17 @@ int main()
   auto result = maximum(x, y); // auto deduce type
   std::cout << "result: " << result << std::endl;
 
+  // Explicit template arguments
+  int a{10};
+  int b{23};
+  double c{34.7};
+  double d{23.4};
+  std::string e{"hello"};
+  std::string f{"world"};
+
+  auto max = maximum<double>(a, f); // explicit type
+  std::cout << "max : " << max << std::endl;
+
   // helloWorld();
   // getName();
   // autoVariables();
