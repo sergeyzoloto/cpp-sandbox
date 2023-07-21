@@ -420,12 +420,13 @@ a file with corresponding name:
 
 // * Passing
 // Passing by value
-
+/* Prevent repeated definition as compiler consider these signature the same
 void say_age(int age)
 {
   ++age; // Parameter
   std::cout << "Hello , you are " << age << " years old! &age : " << &age << std::endl;
 }
+*/
 
 // Passing by pointer
 
@@ -434,6 +435,14 @@ void say_age(int *age)
 { // Parameter
   ++(*age);
   std::cout << "Hello , you are " << *age << " years old! &age : " << &age << std::endl; // 24
+}
+
+// Passing by reference
+
+void say_age(int &age)
+{ // Parameter
+  ++age;
+  std::cout << "Hello , you are " << age << " years old! &age : " << &age << std::endl; // 24
 }
 
 int main()
@@ -450,13 +459,14 @@ int main()
   // references();
 
   int age{23}; // Local
-  std::cout << "age (before call) : " << age << " - &age : " << &age << std::endl;
-  say_age(age); // Argument
-  std::cout << "age (after call) : " << age << " - &age : " << &age << std::endl;
-  // Local
+
   std::cout << "age (before call) : " << age << " - &age : " << &age << std::endl; // 23
   say_age(&age);                                                                   // Argument
   std::cout << "age (after call) : " << age << " - &age : " << &age << std::endl;  // 24
+
+  std::cout << "age (before call) : " << age << "- &age : " << &age << std::endl; // 23
+  say_age(age);                                                                   // Argument
+  std::cout << "age (after call) : " << age << "- &age : " << &age << std::endl;  // 24
 
   return 0;
 }
