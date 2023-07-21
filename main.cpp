@@ -254,7 +254,7 @@ int memoryLeaks()
     Memory has been leaked.
   */
 
-  delete p_number;
+  // delete p_number;
   p_number = nullptr;
 
   /*
@@ -262,6 +262,59 @@ int memoryLeaks()
     They can be accessed and must be released in the same
     scope.
   */
+  return 0;
+}
+
+// Dynamically allocated arrays
+int dynamicallyAllocatedArrays()
+{
+  size_t size{10};
+  // Different ways you declare an array dynamically and
+  // how they are initialized
+
+  // salaries array will contain garbage values
+  double *p_salaries{new double[size]};
+
+  // all values initialized to 0
+  int *p_students{
+      new (std::nothrow) int[size]{}};
+
+  /*
+    Allocating memory space for an array of size
+    double. First 5 will be 1, 2, 3, 4, 5, and the rest
+    will be 0's.
+  */
+  double *p_scores{
+      new (std::nothrow) double[size]{1, 2, 3, 4, 5}};
+
+  // nullptr check and use the allocated array
+  if (p_scores)
+  {
+    std::cout << "size of scores (a regular pointer): " << sizeof(p_scores)
+              << std::endl
+              << "======" << std::endl;
+
+    // Print out elements, Can use regular array access notation,
+    // or pointer arithmetic.
+  }
+
+  // Add []
+  delete[] p_salaries;
+  p_salaries = nullptr;
+  delete[] p_students;
+  p_students = nullptr;
+  delete[] p_scores;
+  p_scores = nullptr;
+
+  // Static vs Dynamic arrays
+  int scores[10]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+  std::cout << "scores size : " << std::size(scores) << std::endl;
+  for (auto s : scores)
+  {
+    std::cout << "value : " << s << std::endl;
+  }
+
   return 0;
 }
 
@@ -274,7 +327,8 @@ int main()
   // allocateMemory();
   // memoryOverflow();
   // nullptrCheck();
-  memoryLeaks();
+  // memoryLeaks();
+  dynamicallyAllocatedArrays();
 
   return 0;
 }
