@@ -418,6 +418,15 @@ a file with corresponding name:
 ** compare.cpp
 */
 
+// * Passing
+// Passing by value
+
+void say_age(int age)
+{
+  ++age; // Parameter
+  std::cout << "Hello , you are " << age << " years old! &age : " << &age << std::endl;
+}
+
 int main()
 {
   // helloWorld();
@@ -429,7 +438,12 @@ int main()
   // nullptrCheck();
   // memoryLeaks();
   // dynamicallyAllocatedArrays();
-  references();
+  // references();
+
+  int age{23}; // Local
+  std::cout << "age (before call) : " << age << "&age : " << &age << std::endl;
+  say_age(age); // Argument
+  std::cout << "age (after call) : " << age << "&age : " << &age << std::endl;
 
   return 0;
 }
