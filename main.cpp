@@ -324,6 +324,19 @@ int references()
   int int_data{33};
   double double_data{55};
 
+  /*
+  Comparing references to pointers
+
+  References don't use dereferencing, while pointers go through the
+  dereferencing operator to read/write.
+
+  References can't be change to reference something else, while pointers can
+  be changed to point somewhere else.
+
+  References must be initialized at declaration,
+  while un-initialized pointers contain garbage.
+  */
+
   // References are just another aliases for variables
   int &ref_int_data{int_data};
   double &ref_double_data{double_data};
