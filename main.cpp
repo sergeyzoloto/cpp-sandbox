@@ -52,6 +52,22 @@ int autoVariables()
   return 0;
 }
 
+// Pointer to Char
+int pointerToChar()
+{
+  // const is required
+  const char *message{"Hello world!"};
+
+  std::cout << "message: " << message << std::endl;
+
+  // To allow further modification
+  char message1[]{"Hello World!"};
+  message1[0] = "B";
+  std::cout << "message1 : " << message1 << std::endl;
+
+  return 0;
+}
+
 int main()
 {
   std::cout << "Hello World!" << std::endl;
@@ -62,7 +78,8 @@ int main()
   int sum = first_number + second_number;
   std::cout << "sum : " << sum << std::endl;
   // getName();
-  autoVariables();
+  // autoVariables();
+  pointerToChar();
 
   return 0;
 }
