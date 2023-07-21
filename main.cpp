@@ -198,6 +198,47 @@ int memoryOverflow()
   return 0;
 }
 
+// Null Pointer Safety
+// Verbose nullptr check
+int nullptrCheck()
+{
+  int *p_number{}; // initialized to nullptr
+
+  if (!(p_number == nullptr))
+  {
+    std::cout << "p_number points to a valid address: " << p_number
+              << std::endl
+              << "p_number: " << *p_number << std::endl;
+  }
+  else
+  {
+    std::cout << "p_number points to an INVALID address." << std::endl;
+  }
+
+  // Compact nullptr check
+
+  // No more nullptr:
+  p_number = new int(7);
+
+  if (p_number)
+  {
+    std::cout << "p_number points to a valid address: " << p_number
+              << std::endl
+              << "p_number: " << *p_number << std::endl;
+  }
+  else
+  {
+    std::cout << "p_number points to an INVALID address." << std::endl;
+  }
+
+  delete p_number;
+  p_number = nullptr;
+
+  // Calling delete on a nullptr is OK, don't overcheck
+
+  return 0;
+}
+
 int main()
 {
   // helloWorld();
@@ -205,7 +246,8 @@ int main()
   // autoVariables();
   // pointerToChar();
   // allocateMemory();
-  memoryOverflow();
+  // memoryOverflow();
+  nullptrCheck();
 
   return 0;
 }
