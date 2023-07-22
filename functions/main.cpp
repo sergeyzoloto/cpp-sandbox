@@ -485,6 +485,15 @@ const char *maximum<const char *>(const char *a, const char *b)
   return (std::strcmp(a, b) > 0) ? a : b;
 }
 
+// * Concepts
+/*
+Concepts in C++20 are a mechanism to place constraints
+on your template.
+
+There are standard built-in concepts and custom concepts.
+
+*/
+
 int main()
 {
 
