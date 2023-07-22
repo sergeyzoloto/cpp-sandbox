@@ -1,5 +1,7 @@
 #include <iostream>
 
+const double PI{3.1415926535897932384626433832795};
+
 // * CLASSES
 
 /*
@@ -25,7 +27,11 @@ Usually used to initialize member variables and put the in a state
 where you want them in a C++ application.
 */
 
-const double PI{3.1415926535897932384626433832795};
+// * Setters and getters
+/*
+These methods allows us to get the access to the member variables.
+Getters return variables, setters update variables.
+*/
 
 class Cylinder
 {
@@ -38,6 +44,25 @@ public:
   Cylinder(double rad_param, double height_param)
   {
     base_radius = rad_param;
+    height = height_param;
+  }
+
+  // Setter and getter methods
+  double get_base_radius()
+  {
+    return base_radius;
+  }
+  double get_height()
+  {
+    return height;
+  }
+
+  void set_base_radius(double radius_param)
+  {
+    base_radius = radius_param;
+  }
+  void set_height(double height_param)
+  {
     height = height_param;
   }
 
@@ -57,9 +82,10 @@ int main()
 {
 
   Cylinder cylinder1; // Object
-  std::cout << "volume : " << cylinder1.volume() << std::endl;
-  Cylinder cylinder2(10, 10); // New object
-  std::cout << "volume : " << cylinder2.volume() << std::endl;
+  std::cout << "volume : " << cylinder1.volume() << std::endl
+            << "base_radius : " << cylinder1.get_base_radius() << std::endl;
+  cylinder1.set_base_radius(2.0);
+  std::cout << "base_radius : " << cylinder1.get_base_radius() << std::endl;
 
   return 0;
 }
